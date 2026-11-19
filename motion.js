@@ -2,6 +2,28 @@ const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = matchMedia('(pointer:fine) and (hover:hover)');
 const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
+const camera = {x:0,y:0,targetX:0,targetY:0,frame:0};
+function moveCamera() {
+  camera.x += (camera.targetX - camera.x) * .09;
+  camera.y += (camera.targetY - camera.y) * .09;
+  hero.style.setProperty('--camera-x', camera.x.toFixed(2) + 'px');
+  hero.style.setProperty('--camera-y', camera.y.toFixed(2) + 'px');
+  const moving = Math.abs(camera.targetX-camera.x) + Math.abs(camera.targetY-camera.y) > .1;
+  camera.frame = moving ? requestAnimationFrame(moveCamera) : 0;
+}
+function aimCamera(x,y) {
+  camera.targetX = x;
+  camera.targetY = y;
+  if (!camera.frame) camera.frame = requestAnimationFrame(moveCamera);
+}
+hero.addEventListener('pointermove', event => {
+  if (!finePointer.matches || motionPreference.matches || hero.classList.contains('is-exploring')) return;
+  const bounds = hero.getBoundingClientRect();
+  aimCamera(((event.clientX-bounds.left)/bounds.width-.5)*34,
+            ((event.clientY-bounds.top)/bounds.height-.5)*20);
+}, {passive:true});
+hero.addEventListener('pointerleave', () => aimCamera(0,0));
+motionPreference.addEventListener('change', () => aimCamera(0,0));
 const nav = header.querySelector('nav');
 const navLinks = [...nav.querySelectorAll('a[href^="#"]')];
 const indicator = document.createElement('span');
