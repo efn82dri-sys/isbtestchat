@@ -51,36 +51,35 @@ dialog[open]{animation:detail-in .26s both ease-out}@keyframes detail-in{from{op
 
 
 html[dir=ltr] .overview{inset:auto auto 20px 4%}html[dir=rtl] .overview{inset:auto 4% 20px auto}.is-exploring .lead{pointer-events:none;opacity:.14;transition:opacity .5s}.lead{transition:opacity .5s}.is-exploring .lead .actions{visibility:hidden}#scene-label{display:block;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}#labFigure::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,#d5dd7655 50%,transparent 62%);mix-blend-mode:screen;pointer-events:none;animation:scan 6s ease-in-out infinite}@keyframes scan{0%,100%{transform:translateX(-70%)}50%{transform:translateX(70%)}}@media(max-width:760px){html[dir=rtl] .is-exploring .overview{inset:70px 4% auto auto}.is-exploring .lead{opacity:0}}
-/* Frosted glass and neon accents for the campus entrance. */
-.hero { --ice:#aef9f4; --violet:#b9a7ff; --gold:var(--ice); --olive:var(--ice); background:#0b1423; }
-header { background:linear-gradient(180deg,#070d21b8,transparent); }
-header nav, header #lang, #stations .station, .hero .ghost, .hero .overview {
-  background:linear-gradient(135deg,#253e52c7,#141831b3);
-  border:1px solid #b9f9ff69;
-  backdrop-filter:blur(18px) saturate(1.35);
-  box-shadow:inset 0 1px #f5ffff40,0 8px 30px #050b204f;
+
+/* Campus beacons and pointer-reactive frosted glass. */
+body{background:radial-gradient(ellipse at 12% 32%,#344039 0,transparent 34%),radial-gradient(ellipse at 90% 67%,#3a353e 0,transparent 36%),#161c1a}
+header nav,.hero .ghost,#stations .station,.overview,.card,.lab,.team,.contact,dialog{
+  border:1px solid #e9f7ef42;
+  background-color:#ffffff12;
+  backdrop-filter:blur(18px) saturate(1.22);
+  box-shadow:inset 0 1px #fff3,0 16px 52px #080e1240;
 }
-header .pill, .hero .pill:not(.ghost) {
-  background:linear-gradient(120deg,#c9fff7,#a8ecfd 55%,#c6b6ff);
-  color:#101d31;
-  box-shadow:0 5px 25px #64e8ec46;
-}
-.hero .scrim { background:linear-gradient(90deg,#070d19f5,#080f21ad 26%,transparent 62%),linear-gradient(0deg,#080d1ac2,transparent 32%,transparent 73%,#080d1a70); }
-html[dir=rtl] .hero .scrim { background:linear-gradient(270deg,#070d19f5,#080f21ad 26%,transparent 62%),linear-gradient(0deg,#080d1ac2,transparent 32%,transparent 73%,#080d1a70); }
-.hero .lead h1 { color:#f4fdff; text-shadow:0 3px 24px #060d1c; }
-.hero .lead .eyebrow { text-shadow:0 0 22px #9cfaf6aa; }
-#stations .station { border-color:#adfaff8c; }
-#stations .station::before { background:var(--ice); box-shadow:0 0 15px #6afffa; }
-#stations .station:nth-child(2)::before { background:var(--violet); box-shadow:0 0 15px #a87cff; }
-#stations .station::after { background:linear-gradient(var(--ice),#97f9ff27); box-shadow:0 0 7px #6afffa80; }
-#stations .station:hover, #stations .station:focus-visible { border-color:#d2ffff; box-shadow:0 0 22px #80f6fc44; }
-#stations .station[aria-pressed=true] { background:var(--ice); color:#112238; }
-@media(max-width:760px) {
-  .hero .scrim, html[dir=rtl] .hero .scrim { background:linear-gradient(0deg,#0a1120 5%,#0a1120f2 32%,#0a112045 72%,#0a112075); }
-}
+#stations .station{background:#182421bc}
+.lab,.team,.contact{background-image:linear-gradient(135deg,#c5e9d51b,#ebd4f30a)}
+.card{transform:perspective(880px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transform-style:preserve-3d;transition:transform .23s ease-out,border-color .3s}
+.card img{inset:0 0 auto;height:88%}
+.card:after{background:linear-gradient(0deg,#14201de8 4%,#172120ab 48%,transparent 80%)}
+.card::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at var(--light-x,50%) var(--light-y,50%),#f8ffff2f,transparent 48%);opacity:0;transition:opacity .28s}
+.card:hover::before{opacity:1}
+.campus-poster{transform:scale(1.025) translate3d(var(--hero-x,0px),var(--hero-y,0px),0);transition:transform .4s ease-out}
+.campus-lights{position:absolute;inset:0;z-index:-1;pointer-events:none;transform:scale(1.025) translate3d(var(--hero-x,0px),var(--hero-y,0px),0);transition:transform .4s ease-out}
+.campus-lights i{position:absolute;width:19px;height:9px;border:1px solid var(--neon);border-radius:50%;color:var(--neon);box-shadow:0 0 14px currentColor,0 0 32px currentColor;transform:translate(-50%,-50%);animation:beacon 3.7s ease-in-out infinite alternate}
+.campus-lights i::before{content:'';position:absolute;bottom:50%;left:50%;height:58px;width:1px;background:linear-gradient(transparent,currentColor)}
+.campus-lights i:nth-child(1){--neon:#71ffc7}
+.campus-lights i:nth-child(2){--neon:#7fe7ff;animation-delay:-1.3s}
+.campus-lights i:nth-child(3){--neon:#d3acff;animation-delay:-2.6s}
+.is-exploring .campus-lights{visibility:hidden}
+@keyframes beacon{from{opacity:.58}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.card,.campus-poster,.campus-lights{transform:none}.campus-lights i{animation:none}}
 </style><body>
 <header><a href="#" class="brand"><i></i> ISB Group</a><nav><a href="#expertise" data-t="expertise"></a><a href="#projects" data-t="projects"></a><a href="#lab" data-t="lab"></a><a href="#team" data-t="team"></a></nav><button id="lang" aria-label="Change language">EN</button><a class="pill" href="#contact" data-t="contact"></a></header>
-<main><section class="hero" aria-labelledby="headline"><img class="campus-poster" src="campus-neon.jpg" alt="" fetchpriority="high"><div id="scene" aria-hidden="true"></div><div class="scrim"></div><div class="lead"><p class="eyebrow" data-t="campus"></p><h1 id="headline" data-t="headline"></h1><p data-t="intro"></p><div class="actions"><button id="explore" class="pill" data-t="explore"></button><a class="pill ghost" href="#expertise" data-t="services"></a></div></div><div id="stations" aria-label="Departments"></div><button id="overview" class="overview" type="button"></button><div id="scene-label" role="status"></div></section>
+<main><section class="hero" aria-labelledby="headline"><img class="campus-poster" src="campus.jpg" alt="" fetchpriority="high"><div class="campus-lights" aria-hidden="true"><i></i><i></i><i></i></div><div id="scene" aria-hidden="true"></div><div class="scrim"></div><div class="lead"><p class="eyebrow" data-t="campus"></p><h1 id="headline" data-t="headline"></h1><p data-t="intro"></p><div class="actions"><button id="explore" class="pill" data-t="explore"></button><a class="pill ghost" href="#expertise" data-t="services"></a></div></div><div id="stations" aria-label="Departments"></div><button id="overview" class="overview" type="button"></button><div id="scene-label" role="status"></div></section>
 <section id="expertise" class="section editorial"><div class="section-head"><p class="eyebrow" data-t="expertise"></p><h2 data-t="three"></h2></div><div id="departments" class="grid"></div></section>
 <section id="projects" class="section editorial"><div class="section-head"><p class="eyebrow" data-t="portfolio"></p><h2 data-t="projects"></h2></div><div id="portfolio" class="grid"></div></section>
 <section id="lab" class="section lab"><div><p class="eyebrow" data-t="lab"></p><h2 data-t="labTitle"></h2><p data-t="labCopy"></p><div id="metrics" class="actions"></div></div><figure id="labFigure"><img id="labImg" alt=""><figcaption><strong id="metricValue"></strong><span id="metricCopy"></span></figcaption></figure></section>
@@ -110,7 +109,44 @@ $('overview').onclick=()=>{select(-1);$('explore').focus()};
 function render(){const copy=t[lang];$('overview').textContent=lang==='fa'?'نمای شهرک':'Campus Overview';document.documentElement.lang=lang;document.documentElement.dir=lang==='fa'?'rtl':'ltr';document.title='ISB Group | '+copy.campus;document.querySelectorAll('[data-t]').forEach(el=>el.textContent=copy[el.dataset.t]);$('lang').textContent=lang==='fa'?'EN':'فا';$('close').setAttribute('aria-label',lang==='fa'?'بستن':'Close');$('stations').replaceChildren(...departments.map((d,i)=>button(d.title[lang],'station',()=>{document.querySelector('#scene canvas')&&active!==i?select(i):openDetail(d)})));$('departments').replaceChildren(...departments.map(card));$('portfolio').replaceChildren(...projects.map(card));$('metrics').replaceChildren(...['heating','cooling'].map((key,i)=>button(copy[key],'station',()=>setMetric(i))));updateStations();setMetric(metric);showDetail();dispatchEvent(new Event('isb:language'))}
 $('lang').onclick=()=>{lang=lang==='fa'?'en':'fa';try{localStorage.setItem('isb-language',lang)}catch{}render()};
 $('explore').onclick=()=>{select((active+1)%departments.length);$('stations').children[active].focus({preventScroll:true})};
-$('close').onclick=()=>$('detail').close();$('detailLink').onclick=()=>$('detail').close();$('detail').addEventListener('close',()=>trigger?.focus({preventScroll:true}));image($('labImg'),'/projects/mehregan/01-analysis.jpg');image($('teamImg'),'/team/dr-sara-atashi.jpg');render();</script><script type="module">import * as T from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js';
+$('close').onclick=()=>$('detail').close();$('detailLink').onclick=()=>$('detail').close();$('detail').addEventListener('close',()=>trigger?.focus({preventScroll:true}));image($('labImg'),'/projects/mehregan/01-analysis.jpg');image($('teamImg'),'/team/dr-sara-atashi.jpg');render();
+const hero=document.querySelector('.hero');
+const poster=hero.querySelector('.campus-poster');
+const beacons=hero.querySelectorAll('.campus-lights i');
+const landmarks=[[.31,.58],[.53,.38],[.88,.45]];
+function alignBeacons(){
+  if(!poster.naturalWidth)return;
+  const width=poster.clientWidth,height=poster.clientHeight;
+  const scale=Math.max(width/poster.naturalWidth,height/poster.naturalHeight);
+  const imageWidth=poster.naturalWidth*scale,imageHeight=poster.naturalHeight*scale;
+  const position=getComputedStyle(poster).objectPosition.split(' ').map(value=>parseFloat(value)/100);
+  landmarks.forEach(([x,y],index)=>{
+    beacons[index].style.left=((width-imageWidth)*position[0]+imageWidth*x)+'px';
+    beacons[index].style.top=((height-imageHeight)*position[1]+imageHeight*y)+'px';
+  });
+}
+poster.addEventListener('load',alignBeacons);
+new ResizeObserver(alignBeacons).observe(poster);
+const interactivePointer=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+function pointerEffect(event){
+  if(!interactivePointer.matches)return;
+  const target=event.target.closest('.card') || event.target.closest('.hero');
+  if(!target)return;
+  const rect=target.getBoundingClientRect();
+  const x=Math.max(0,Math.min(1,(event.clientX-rect.left)/rect.width));
+  const y=Math.max(0,Math.min(1,(event.clientY-rect.top)/rect.height));
+  if(target===hero){target.style.setProperty('--hero-x',((x-.5)*12)+'px');target.style.setProperty('--hero-y',((y-.5)*8)+'px');return;}
+  target.style.setProperty('--tilt-x',((.5-y)*10)+'deg');
+  target.style.setProperty('--tilt-y',((x-.5)*10)+'deg');
+  target.style.setProperty('--light-x',(x*100)+'%');
+  target.style.setProperty('--light-y',(y*100)+'%');
+}
+document.addEventListener('pointermove',pointerEffect,{passive:true});
+document.addEventListener('pointerout',event=>{
+  const target=event.target.closest('.card,.hero');
+  if(!target||target.contains(event.relatedTarget))return;
+  for(const property of ['--tilt-x','--tilt-y','--hero-x','--hero-y'])target.style.removeProperty(property);
+});</script><script type="module">import * as T from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js';
 const root=document.querySelector('#scene'), scene=new T.Scene(), camera=new T.PerspectiveCamera(42,1,.1,350);
 let renderer;try{renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'})}catch{}
 if(renderer){
@@ -133,7 +169,7 @@ function building(x,z,w,h,d,landmark=false){const g=new T.Group();g.position.set
 const rows=Math.max(2,Math.round(h/1.3)),cols=Math.max(2,Math.round(w/1.25));const windows=new T.InstancedMesh(cube,warm,rows*cols);const o=new T.Object3D();
 for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){o.position.set(-w/2+(i+.5)*w/cols,(j+.56)*h/rows,d/2+.035);o.scale.set(.48,.32,.05);o.updateMatrix();windows.setMatrixAt(j*cols+i,o.matrix);windows.setColorAt(j*cols+i,new T.Color(rnd()>.28?0xffd9a2:0x2d3c3b))}g.add(windows);return {g,body,windows}}
 for(let i=0;i<68;i++){const x=(rnd()-.5)*145,z=-17-rnd()*53;if(Math.abs(x)<14&&z>-24)continue;building(x,z,2+rnd()*5,2+rnd()*9,2+rnd()*5)}
-sites.forEach(([x,z,w,h,d],id)=>{const a=building(x,z,w,h,d,true);stations.push(a);for(let i=0;i<6;i++)box(stone,-w/2+i*w/5,h/2,d/2+.11,.12,h,.18,a.g);if(id===1)for(let i=0;i<3;i++){const panel=box(dark,-2+i*2,h+.42,0,1.6,.12,4,a.g);panel.rotation.x=.16}if(id===2){const shell=glass.clone();shell.transparent=true;a.body.material=shell;for(const px of [-w/2,w/2])for(const pz of [-d/2,d/2])box(stone,px,h/2,pz,.24,h,.24,a.g);for(let i=1;i<7;i++)box(stone,0,i*h/7,0,w+.15,.13,d+.15,a.g)}});
+sites.forEach(([x,z,w,h,d],id)=>{const a=building(x,z,w,h,d,true);stations.push(a);const outline=new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(w+.08,h+.06,d+.08)),new T.LineBasicMaterial({color:[0x71ffc7,0x7fe7ff,0xd3acff][id],transparent:true,opacity:.33}));outline.position.y=h/2;a.g.add(outline);a.outline=outline;for(let i=0;i<6;i++)box(stone,-w/2+i*w/5,h/2,d/2+.11,.12,h,.18,a.g);if(id===1)for(let i=0;i<3;i++){const panel=box(dark,-2+i*2,h+.42,0,1.6,.12,4,a.g);panel.rotation.x=.16}if(id===2){const shell=glass.clone();shell.transparent=true;a.body.material=shell;for(const px of [-w/2,w/2])for(const pz of [-d/2,d/2])box(stone,px,h/2,pz,.24,h,.24,a.g);for(let i=1;i<7;i++)box(stone,0,i*h/7,0,w+.15,.13,d+.15,a.g)}});
 const points=sites.map(([x,z],i)=>new T.Vector3(x,.65,z+5+i));const curve=new T.CatmullRomCurve3([...points,new T.Vector3(24,.65,7),new T.Vector3(12,.65,17),new T.Vector3(-12,.65,19),new T.Vector3(-24,.65,10),points[0]]);
 const track=new T.Mesh(new T.TubeGeometry(curve,150,.065,6,false),warm);scene.add(track);
 const orb=new T.Mesh(new T.SphereGeometry(.21,12,10),warm);scene.add(orb);
@@ -141,6 +177,7 @@ const look=new T.Vector3(0,3,-6),dest=look.clone(),pos=new T.Vector3(44,34,57),g
 let selected=-1,visible=true,raf=0,start=0;const motion=matchMedia('(prefers-reduced-motion: reduce)');function queue(){if(!raf&&visible&&!document.hidden&&selected>=0)raf=requestAnimationFrame(draw)}
 function setCamera(){const rtl=document.documentElement.dir==='rtl',side=rtl?-1:1;if(selected<0){goal.set(37*side,33,root.clientWidth<650?79:58);dest.set(root.clientWidth<650?0:7*side,3,-8)}else{const [x,z,,h]=sites[selected];goal.set(x+side*13,h+10,z+24);dest.set(x,h*.42,z)}if(motion.matches){camera.position.copy(goal);look.copy(dest)}queue()}
 function resize(){const {clientWidth:w,clientHeight:h}=root;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);setCamera()}
-function draw(ms){raf=0;if(!visible||document.hidden||selected<0)return;if(!start)start=ms;camera.position.lerp(goal,.045);look.lerp(dest,.055);camera.lookAt(look);orb.position.copy(curve.getPoint(motion.matches?0:((ms-start)*.00008)%1));stations[2].body.material.opacity+=( (selected===2?.24:1)-stations[2].body.material.opacity)*.08;stations[2].windows.visible=selected!==2;renderer.render(scene,camera);if(!motion.matches)queue()}
+function draw(ms){raf=0;if(!visible||document.hidden||selected<0)return;if(!start)start=ms;camera.position.lerp(goal,.045);look.lerp(dest,.055);camera.lookAt(look);orb.position.copy(curve.getPoint(motion.matches?0:((ms-start)*.00008)%1));stations[2].body.material.opacity+=( (selected===2?.24:1)-stations[2].body.material.opacity)*.08;stations[2].windows.visible=selected!==2;stations.forEach((station,index)=>{station.outline.material.opacity=index===selected?.85:.24});renderer.render(scene,camera);if(!motion.matches)queue()}
 addEventListener('isb:station',e=>{selected=e.detail;setCamera()});addEventListener('isb:language',setCamera);motion.addEventListener('change',setCamera);document.addEventListener('visibilitychange',queue);new ResizeObserver(resize).observe(root);new IntersectionObserver(([e])=>{visible=e.isIntersecting;queue()}).observe(root);resize();
 }</script></body></html>
+
