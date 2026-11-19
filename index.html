@@ -50,9 +50,37 @@ dialog[open]{animation:detail-in .26s both ease-out}@keyframes detail-in{from{op
 }
 
 
-html[dir=ltr] .overview{inset:auto auto 20px 4%}html[dir=rtl] .overview{inset:auto 4% 20px auto}.is-exploring .lead{pointer-events:none;opacity:.14;transition:opacity .5s}.lead{transition:opacity .5s}.is-exploring .lead .actions{visibility:hidden}#scene-label{display:block;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}#labFigure::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,#d5dd7655 50%,transparent 62%);mix-blend-mode:screen;pointer-events:none;animation:scan 6s ease-in-out infinite}@keyframes scan{0%,100%{transform:translateX(-70%)}50%{transform:translateX(70%)}}@media(max-width:760px){html[dir=rtl] .is-exploring .overview{inset:70px 4% auto auto}.is-exploring .lead{opacity:0}}</style><body>
+html[dir=ltr] .overview{inset:auto auto 20px 4%}html[dir=rtl] .overview{inset:auto 4% 20px auto}.is-exploring .lead{pointer-events:none;opacity:.14;transition:opacity .5s}.lead{transition:opacity .5s}.is-exploring .lead .actions{visibility:hidden}#scene-label{display:block;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}#labFigure::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,#d5dd7655 50%,transparent 62%);mix-blend-mode:screen;pointer-events:none;animation:scan 6s ease-in-out infinite}@keyframes scan{0%,100%{transform:translateX(-70%)}50%{transform:translateX(70%)}}@media(max-width:760px){html[dir=rtl] .is-exploring .overview{inset:70px 4% auto auto}.is-exploring .lead{opacity:0}}
+/* Frosted glass and neon accents for the campus entrance. */
+.hero { --ice:#aef9f4; --violet:#b9a7ff; --gold:var(--ice); --olive:var(--ice); background:#0b1423; }
+header { background:linear-gradient(180deg,#070d21b8,transparent); }
+header nav, header #lang, #stations .station, .hero .ghost, .hero .overview {
+  background:linear-gradient(135deg,#253e52c7,#141831b3);
+  border:1px solid #b9f9ff69;
+  backdrop-filter:blur(18px) saturate(1.35);
+  box-shadow:inset 0 1px #f5ffff40,0 8px 30px #050b204f;
+}
+header .pill, .hero .pill:not(.ghost) {
+  background:linear-gradient(120deg,#c9fff7,#a8ecfd 55%,#c6b6ff);
+  color:#101d31;
+  box-shadow:0 5px 25px #64e8ec46;
+}
+.hero .scrim { background:linear-gradient(90deg,#070d19f5,#080f21ad 26%,transparent 62%),linear-gradient(0deg,#080d1ac2,transparent 32%,transparent 73%,#080d1a70); }
+html[dir=rtl] .hero .scrim { background:linear-gradient(270deg,#070d19f5,#080f21ad 26%,transparent 62%),linear-gradient(0deg,#080d1ac2,transparent 32%,transparent 73%,#080d1a70); }
+.hero .lead h1 { color:#f4fdff; text-shadow:0 3px 24px #060d1c; }
+.hero .lead .eyebrow { text-shadow:0 0 22px #9cfaf6aa; }
+#stations .station { border-color:#adfaff8c; }
+#stations .station::before { background:var(--ice); box-shadow:0 0 15px #6afffa; }
+#stations .station:nth-child(2)::before { background:var(--violet); box-shadow:0 0 15px #a87cff; }
+#stations .station::after { background:linear-gradient(var(--ice),#97f9ff27); box-shadow:0 0 7px #6afffa80; }
+#stations .station:hover, #stations .station:focus-visible { border-color:#d2ffff; box-shadow:0 0 22px #80f6fc44; }
+#stations .station[aria-pressed=true] { background:var(--ice); color:#112238; }
+@media(max-width:760px) {
+  .hero .scrim, html[dir=rtl] .hero .scrim { background:linear-gradient(0deg,#0a1120 5%,#0a1120f2 32%,#0a112045 72%,#0a112075); }
+}
+</style><body>
 <header><a href="#" class="brand"><i></i> ISB Group</a><nav><a href="#expertise" data-t="expertise"></a><a href="#projects" data-t="projects"></a><a href="#lab" data-t="lab"></a><a href="#team" data-t="team"></a></nav><button id="lang" aria-label="Change language">EN</button><a class="pill" href="#contact" data-t="contact"></a></header>
-<main><section class="hero" aria-labelledby="headline"><img class="campus-poster" src="campus.jpg" alt="" fetchpriority="high"><div id="scene" aria-hidden="true"></div><div class="scrim"></div><div class="lead"><p class="eyebrow" data-t="campus"></p><h1 id="headline" data-t="headline"></h1><p data-t="intro"></p><div class="actions"><button id="explore" class="pill" data-t="explore"></button><a class="pill ghost" href="#expertise" data-t="services"></a></div></div><div id="stations" aria-label="Departments"></div><button id="overview" class="overview" type="button"></button><div id="scene-label" role="status"></div></section>
+<main><section class="hero" aria-labelledby="headline"><img class="campus-poster" src="campus-neon.jpg" alt="" fetchpriority="high"><div id="scene" aria-hidden="true"></div><div class="scrim"></div><div class="lead"><p class="eyebrow" data-t="campus"></p><h1 id="headline" data-t="headline"></h1><p data-t="intro"></p><div class="actions"><button id="explore" class="pill" data-t="explore"></button><a class="pill ghost" href="#expertise" data-t="services"></a></div></div><div id="stations" aria-label="Departments"></div><button id="overview" class="overview" type="button"></button><div id="scene-label" role="status"></div></section>
 <section id="expertise" class="section editorial"><div class="section-head"><p class="eyebrow" data-t="expertise"></p><h2 data-t="three"></h2></div><div id="departments" class="grid"></div></section>
 <section id="projects" class="section editorial"><div class="section-head"><p class="eyebrow" data-t="portfolio"></p><h2 data-t="projects"></h2></div><div id="portfolio" class="grid"></div></section>
 <section id="lab" class="section lab"><div><p class="eyebrow" data-t="lab"></p><h2 data-t="labTitle"></h2><p data-t="labCopy"></p><div id="metrics" class="actions"></div></div><figure id="labFigure"><img id="labImg" alt=""><figcaption><strong id="metricValue"></strong><span id="metricCopy"></span></figcaption></figure></section>
